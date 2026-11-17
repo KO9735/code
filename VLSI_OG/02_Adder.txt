@@ -33,6 +33,8 @@ half_adder HA2 (s1, Cin, sum, c2);
 or_add finout (c1, c2, Cout);
 endmodule
 
+----------------------------------------------------------------------
+
 `timescale 1ns / 1ps
 
 module tb_full_adder;
@@ -73,6 +75,8 @@ module rs_latch (
      nand G1 (Q, S_n, Q_n);
      nand G2 (Q_n, R_n, Q);
 endmodule
+
+----------------------------------------------------------------------
 
 `timescale 1ns / 1ps
 
