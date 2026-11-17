@@ -11,26 +11,26 @@ void main(void)
 {
     while (1)
     {
-        P0 = 0xFF;       // Set Port 0 HIGH
-        delay();         // Generate HIGH time
+        P0 = 0xFF;       
+        delay();         
 
-        P0 = 0x00;       // Set Port 0 LOW
-        delay();         // Generate LOW time
+        P0 = 0x00;       
+        delay();        
     }
 }
 
-// Timer 0 delay function
+
 void delay(void)
 {
-    TMOD = 0x01;         // Timer 0, Mode 1 (16-bit timer)
-    TL0 = 0x01;          // Load lower byte of Timer 0
-    TH0 = 0xFF;          // Load higher byte of Timer 0
-    TR0 = 1;             // Start Timer 0
+    TMOD = 0x01;         
+    TL0 = 0x01;          
+    TH0 = 0xFF;          
+    TR0 = 1;             
 
-    while (TF0 == 0);    // Wait until timer overflows
+    while (TF0 == 0);    
 
-    TR0 = 0;             // Stop Timer 0
-    TF0 = 0;             // Clear Timer 0 overflow flag
+    TR0 = 0;             
+    TF0 = 0;             
 }
 
 
@@ -49,21 +49,20 @@ void main(void)
         // Increase value from 0 to 255
         for (i = 0; i <= 255; i++)
         {
-            P1 = i;      // Send increasing value to Port 1
-            delay();     // Small delay
+            P1 = i;      
+            delay();     
         }
 
         // Decrease value from 255 to 0
         for (j = 255; j >= 0; j--)
         {
-            P1 = j;      // Send decreasing value to Port 1
-            delay();     // Small delay
+            P1 = j;      
+            delay();     
         }
     }
 }
 
-// The supplied triangular-wave listing declares delay() but does not define it.
-// This uses the Timer 0 delay function shown with the square-wave listing.
+
 void delay(void)
 {
     TMOD = 0x01;
