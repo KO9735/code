@@ -44,6 +44,8 @@ module up_down_counter_3bit (
 
 endmodule
 
+----------------------------------------------------------------------
+
 `timescale 1ns / 1ps
 
 module tb_up_down_counter_3bit;
@@ -111,6 +113,8 @@ module mod8_counter (
 
 endmodule
 
+----------------------------------------------------------------------
+
 `timescale 1ns / 1ps
 
 module tb_mod8_counter;
@@ -159,6 +163,8 @@ module binary_counter_4bit (
      end
 
 endmodule
+
+----------------------------------------------------------------------
 
 `timescale 1ns / 1ps
 
