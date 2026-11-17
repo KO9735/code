@@ -47,18 +47,18 @@ void LCD_cmd(unsigned char ch)
 
 void LCD_init(void)
 {
-    PINSEL0 &= 0xFF0FFFFF;       // P0.10 and P0.11 as GPIO
-    PINSEL1 &= 0xFFFFFCFF;       // P0.20 as GPIO
-    PINSEL2 &= 0xFFFFFFF3;       // PORT1 as GPIO
+    PINSEL0 &= 0xFF0FFFFF;       
+    PINSEL1 &= 0xFFFFFCFF;       
+    PINSEL2 &= 0xFFFFFFF3;       
 
     IODIR0 = RS | EN | RW;
     IODIR1 = LCD_PORT;
 
-    LCD_cmd(0x38);               // 8-bit, two lines
-    LCD_cmd(0x06);               // Entry mode
-    LCD_cmd(0x0C);               // Display ON, cursor OFF
-    LCD_cmd(0x01);               // Clear display
-    LCD_cmd(0x80);               // First line, first position
+    LCD_cmd(0x38);               
+    LCD_cmd(0x06);               
+    LCD_cmd(0x0C);               
+    LCD_cmd(0x01);               
+    LCD_cmd(0x80);               
 }
 
 void LCD_display(int row, int pos, char *ch)
@@ -95,7 +95,7 @@ SOURCE FILE: Practical_5_LPC2148_ADC/adc.c
 
 void ADCInit(void)
 {
-    PINSEL1 &= 0xF0FFFFFF;       // Configure P0.28 and P0.29 as ADC pins
+    PINSEL1 &= 0xF0FFFFFF;       
     PINSEL1 |= 0x05000000;
 }
 
@@ -103,10 +103,10 @@ unsigned int ADC_Read(unsigned char channel)
 {
     static unsigned int ad1_data;
 
-    AD0CR = 0x00200300 | (1 << channel);  // Burst off, clock divider, channel, 10-bit ADC
-    AD0CR |= (1 << 24);                   // Start ADC
+    AD0CR = 0x00200300 | (1 << channel);  
+    AD0CR |= (1 << 24);                   
 
-    while (!(AD0GDR & 0x80000000));       // Wait for DONE bit
+    while (!(AD0GDR & 0x80000000));       
 
     ad1_data = (AD0GDR & 0x0000FFC0) >> 6;
     return ad1_data;
@@ -147,7 +147,7 @@ int main(void)
 
     while (1)
     {
-        temp = ADC_Read(1);                   // Read AN0.1 / AD0.1
+        temp = ADC_Read(1);
         sprintf(buf, "ADC result:0x%03X", temp);
         LCD_display(1, 1, buf);
         delay(20);
