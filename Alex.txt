@@ -1,0 +1,23 @@
+
+#include <reg51.h>
+
+void delay(void)
+{
+    int i;
+
+    for(i = 0; i < 50000; i++);
+}
+
+void main(void)
+{
+    unsigned char i;
+
+    while(1)
+    {
+        for(i = 0; i <= 255; i++)
+        {
+            P2 = i;
+            delay();
+        }
+    }
+}
